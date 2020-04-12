@@ -9,7 +9,9 @@ import android.net.Uri;
 import android.util.DisplayMetrics;
 
 import androidx.annotation.AnyRes;
+import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import java8.util.stream.IntStreams;
@@ -95,5 +97,23 @@ public final class GenericUtils {
 		}
 		return true;
 	}
+
+    @Nullable
+    public static <E extends Enum<E>> E getEnumByIndex(@IntRange(from = 0) int index,
+                                                       @NonNull Class<E> clz) {
+        return getEnumByIndex(index, clz, null);
+    }
+
+    public static <E extends Enum<E>> E getEnumByIndex(@IntRange(from = 0) int index,
+                                                       @NonNull Class<E> clz,
+                                                       @Nullable E defValue) {
+        E[] constants = clz.getEnumConstants();
+        try {
+            assert constants != null;
+            return constants[index];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return defValue;
+        }
+    }
 
 }

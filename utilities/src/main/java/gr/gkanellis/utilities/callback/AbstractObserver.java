@@ -1,4 +1,4 @@
-package gr.gkanellis.utilities.helper;
+package gr.gkanellis.utilities.callback;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

@@ -20,9 +20,7 @@ import gr.gkanellis.utilities.GenericUtils;
 public class ColoredDividerDecoration extends RecyclerView.ItemDecoration {
 
 	public static final int LIGHT_BLACK = Color.parseColor("#1A000000");
-
 	public static final int LIGHT_WHITE = Color.parseColor("#1Affffff");
-	private final Rect mBounds = new Rect();
 
 	private int mOrientation;
 	private int mSize;
@@ -30,6 +28,7 @@ public class ColoredDividerDecoration extends RecyclerView.ItemDecoration {
 	private boolean mDrawAtLastItem;
 
 	private Drawable mDivider;
+    private final Rect mBounds = new Rect();
 
 	public ColoredDividerDecoration(@NonNull Context context, @Orientation int orientation,
 									boolean drawAtLastItem) {

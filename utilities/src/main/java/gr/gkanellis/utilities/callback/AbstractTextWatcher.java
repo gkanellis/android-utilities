@@ -1,4 +1,4 @@
-package gr.gkanellis.utilities.helper;
+package gr.gkanellis.utilities.callback;
 
 import android.text.Editable;
 import android.text.TextWatcher;

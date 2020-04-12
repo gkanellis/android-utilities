@@ -1,4 +1,4 @@
-package gr.gkanellis.utilities.helper;
+package gr.gkanellis.utilities.callback;
 
 import android.app.Activity;
 import android.app.Application;

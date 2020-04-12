@@ -6,10 +6,14 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.CallSuper;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.franmontiel.localechanger.LocaleChanger;
 
-public abstract class BaseActivity extends AppCompatActivity implements UIHelper {
+import gr.gkanellis.utilities.Activities;
+import gr.gkanellis.utilities.GenericUtils;
+
+public abstract class BaseActivity extends AppCompatActivity implements ContextHelper<FragmentActivity> {
 
 	@Override
 	@CallSuper
@@ -52,4 +56,19 @@ public abstract class BaseActivity extends AppCompatActivity implements UIHelper
 	public void setNavigationBarColorRes(int colorRes) {
 		getWindow().setNavigationBarColor(getColorCompat(colorRes));
 	}
+
+    @Override
+    public <R> R requireArgument(FragmentActivity fragmentActivity, String arg) {
+        return Activities.requireArgument(fragmentActivity, arg);
+    }
+
+    @Override
+    public <R> R optionalArgument(FragmentActivity fragmentActivity, String arg, R defValue) {
+        return Activities.optionalArgument(fragmentActivity, arg, defValue);
+    }
+
+    @Override
+    public int dpToPx(double dp) {
+        return GenericUtils.dpToPx(this, dp);
+    }
 }

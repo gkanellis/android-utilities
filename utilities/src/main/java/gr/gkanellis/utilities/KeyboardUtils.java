@@ -10,7 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 
-import gr.gkanellis.utilities.helper.AbstarctActivityLifecycleCallbacks;
+import gr.gkanellis.utilities.callback.AbstarctActivityLifecycleCallbacks;
 
 public final class KeyboardUtils {
 

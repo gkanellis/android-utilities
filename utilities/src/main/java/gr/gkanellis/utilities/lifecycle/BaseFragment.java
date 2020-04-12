@@ -8,7 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-public abstract class BaseFragment extends Fragment implements UIHelper {
+import gr.gkanellis.utilities.Fragments;
+import gr.gkanellis.utilities.GenericUtils;
+
+public abstract class BaseFragment extends Fragment implements ContextHelper<Fragment> {
 
 	protected Context mContext;
 
@@ -52,4 +55,19 @@ public abstract class BaseFragment extends Fragment implements UIHelper {
 	public void setNavigationBarColorRes(int colorRes) {
 		((Activity) mContext).getWindow().setNavigationBarColor(getColorCompat(colorRes));
 	}
+
+    @Override
+    public <R> R requireArgument(Fragment fragment, String arg) {
+        return Fragments.requireArgument(fragment, arg);
+    }
+
+    @Override
+    public <R> R optionalArgument(Fragment fragment, String arg, R defValue) {
+        return Fragments.optionalArgument(fragment, arg, defValue);
+    }
+
+    @Override
+    public int dpToPx(double dp) {
+        return GenericUtils.dpToPx(mContext, dp);
+    }
 }
