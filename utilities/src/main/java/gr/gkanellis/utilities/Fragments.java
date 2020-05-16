@@ -1,12 +1,8 @@
 package gr.gkanellis.utilities;
 
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-
-import timber.log.Timber;
 
 public final class Fragments {
 
@@ -45,15 +41,6 @@ public final class Fragments {
         }
         arguments.putBoolean(key, value);
         fragment.setArguments(arguments);
-    }
-
-    public static void startActivityFromAnotherApp(Fragment fragment, Intent intent,
-                                                   String errorMessage) {
-        try {
-            fragment.startActivity(intent);
-        } catch (ActivityNotFoundException exception) {
-            Timber.e(errorMessage);
-        }
     }
 
 }

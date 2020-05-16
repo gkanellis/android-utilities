@@ -23,7 +23,6 @@ import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.Task;
 
 import java8.util.function.Consumer;
-import timber.log.Timber;
 
 public final class LocationUtils {
 
@@ -104,10 +103,7 @@ public final class LocationUtils {
 	private void getLastKnownLocation(@NonNull Consumer<Location> consumer) {
 		mFusedLocationClient.getLastLocation()
 				.addOnSuccessListener(consumer::accept)
-				.addOnFailureListener(e -> {
-					Timber.d(e);
-					consumer.accept(null);
-				});
+				.addOnFailureListener(e -> consumer.accept(null));
 	}
 
 	public void getLocation(@NonNull Context context, @NonNull Consumer<Location> locationConsumer) {
