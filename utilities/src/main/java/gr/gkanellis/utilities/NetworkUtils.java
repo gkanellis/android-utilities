@@ -25,7 +25,7 @@ public final class NetworkUtils {
 	}
 
 	@NonNull
-	public static Retrofit.Builder getRetrofitInstanceBuilder(@NonNull String baseUrl) {
+	public static Retrofit.Builder getRetrofitBuilder(@NonNull String baseUrl) {
 		OkHttpClient.Builder builder = new OkHttpClient.Builder();
 		if (BuildConfig.DEBUG) {
 			HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -38,8 +38,8 @@ public final class NetworkUtils {
 	}
 
 	@NonNull
-	public static Retrofit getDefaultRetrofitInstance(@NonNull String baseUrl) {
-		Retrofit.Builder builder = getRetrofitInstanceBuilder(baseUrl);
+	public static Retrofit getDefaultRetrofit(@NonNull String baseUrl) {
+		Retrofit.Builder builder = getRetrofitBuilder(baseUrl);
 		return builder
 				.addConverterFactory(GsonConverterFactory.create(getDefaultGson()))
 				.addCallAdapterFactory(ThreadIndependentCallFactory.getDefault())
