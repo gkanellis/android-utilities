@@ -87,6 +87,15 @@ public class BaseRecyclerViewAdapter<T extends RecyclerViewModel> extends
         notifyObservers();
     }
 
+    public <S extends T> void setItem(int index, S viewModel) {
+        if (viewModel == null) {
+            throw new NullPointerException("Cannot add a null model to list");
+        }
+        mItemsList.set(index, viewModel);
+        notifyItemChanged(index);
+        notifyObservers();
+    }
+
     public void removeItem(int position) {
         if (position < 0 && position >= mItemsList.size() - 1) {
             throw new IndexOutOfBoundsException("Adapter index out of bounds: " + position);
